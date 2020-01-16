@@ -6,7 +6,6 @@ class BaseModel(Model):
 	class Meta:
 		database = db
 
-
 class Contact(BaseModel):
 	fname = CharField(null = False)
 	lname = CharField(null = False)
@@ -17,11 +16,8 @@ db.connect()
 # db.drop_tables([Contact])
 db.create_tables([Contact])
 
-# adam = Contact(fname='Adam', lname='DeLessio', email='adamdelessio@gmail.com')
-# adam.save()
-
 def on_load():
-	home = input("Would you like to add a contact or view existing ones? Type 'add' or 'view': ")
+	home = input("Would you like to add a contact or view existing ones? Type 'a' or 'v': ")
 	if home == 'add':
 		fname = input("Enter first name: ")
 		lname = input("Enter last name: ")
@@ -30,9 +26,22 @@ def on_load():
 		new_contact.save()
 		on_load()
 	elif home == 'view':
-		contact = Contact.select()
-		for c in contact:
-			print(c.fname, c.lname, c.email)
+		view = input("View all or search? Type 'va' or 's': ")
+		if view == 'va':
+			contacts = Contact.select()
+			for c in contacts:
+				print(c.fname, c.lname, c.email)
+			on_load()
+		elif view == 'search':
+			search_name = input("Search by first name: ")
+			contacts = Contact.select()
+			for c in contacts:
+				if search_name == c.fname:
+					print(c.fname, c.lname, c.email)
+				else:
+					print("No contacts by that name")
+					on_load()
+
 
 
 
