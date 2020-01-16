@@ -14,7 +14,7 @@ class Contact(BaseModel):
 
 db.connect()
 # db.drop_tables([Contact])
-db.create_tables([Contact])
+# db.create_tables([Contact])
 
 def on_load():
 	home = input("Would you like to add a contact or view, update, or delete an existing one? Type 'a', 'v', 'u', or 'd': ")
@@ -43,8 +43,23 @@ def on_load():
 				# else:
 				# 	print("No contacts by that name.")
 				# 	on_load()
-	
-
+	elif home == 'u':
+		update_contact = input("Search by first name for the contact you want to update: ")
+		search_update = Contact.select()
+		for c in search_update:
+			if update_contact == c.fname:
+				new_update = Contact.get(Contact.fname == update_contact)
+				update_field = input("Which field do you want to update? fname/lname/email: ")
+				if update_field == 'fname':
+					new_update.fname = input("New first name: ")
+					new_update.save()
+				elif update_field == 'lname':
+					new_update.lname = input("New last name: ")
+					new_update.save()
+				elif update_field == 'email':
+					new_update.email == input("New email: ")
+					new_update.save()
+				on_load()
 
 	elif home == 'd':
 		seek_destroy = input("Search by first name for the contact you want to delete: ")
@@ -60,7 +75,9 @@ def on_load():
 					print("Oh, ok. That was close.")
 					on_load()
 
-
+	else:
+		print("Please type one of the approved commands.")
+		on_load()
 
 
 
