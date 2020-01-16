@@ -8,13 +8,13 @@ class BaseModel(Model):
 
 
 class Contact(BaseModel):
-	fname = CharField()
-	lname = CharField()
-	email = CharField()
+	fname = CharField(null = False)
+	lname = CharField(null = False)
+	email = CharField(null = False)
 	# phone = IntegerField()
 
 db.connect()
-db.drop_tables([Contact])
+# db.drop_tables([Contact])
 db.create_tables([Contact])
 
 # adam = Contact(fname='Adam', lname='DeLessio', email='adamdelessio@gmail.com')
@@ -26,7 +26,19 @@ def on_load():
 		fname = input("Enter first name: ")
 		lname = input("Enter last name: ")
 		email = input("Enter email: ")
-	new_contact = Contact(fname=fname, lname=lname, email=email)
-	new_contact.save()
+		new_contact = Contact(fname=fname, lname=lname, email=email)
+		new_contact.save()
+		on_load()
+	elif home == 'view':
+		contact = Contact.select()
+		for c in contact:
+			print(c.fname, c.lname, c.email)
+
+
+
+
+
+
+
 
 on_load()
