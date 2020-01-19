@@ -34,13 +34,7 @@ def on_load():
 		if phone == 'x':
 			on_load()
 
-		# format_phone = []
-		# for char in phone:
-		# 	format_phone.append(char)
-		# area = ''.join(str(format_phone[0:3]))
 		new_phone = '(' + phone[0:3] + ') ' + phone[3:6] + '-' + phone[6:]
-		# new_phone = f"({area}) {format_phone[3:]}"
-		# new_phone = ''.join(f"({format_phone[0:3]}) {format_phone[3:6]}-{format_phone[6:]}")
 
 		print("Contact added!")
 		new_contact = Contact(fname=fname, lname=lname, email=email, phone=new_phone)
