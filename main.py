@@ -111,7 +111,6 @@ def on_load():
 				else:
 					print("\nDeletion aborted.\n")
 				on_load()
-			on_load()
 
 	else:
 		print("\nPlease type one of the approved commands.\n")
