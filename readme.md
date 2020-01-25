@@ -1,8 +1,12 @@
 # Command Line Contact Book
 
-#### Technology Used
+### Goals
+- Build a python command line application with full CRUD capabilities.
+
+### Technology Used
 - Python
 - PeeWee
+- SQL
 
-#### Description
-> Follow the prompts and enjoy your personal, digital rolodex. This project utilizes full CRUD to add, view, update, and delete contacts.
+### Description
+> Follow the prompts and enjoy your personal, digital rolodex.
