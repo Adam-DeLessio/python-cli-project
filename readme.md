@@ -8,5 +8,8 @@
 - PeeWee
 - SQL
 
-### Description
-> Follow the prompts and enjoy your personal, digital rolodex.
+### Getting Started
+- Fork and clone this repository.
+- Navigate to the directory, install dependencies.
+- In the terminal run ```pipenv run python main.py```
+- Follow the prompts and enjoy your personal, digital rolodex.
